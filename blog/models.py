@@ -14,6 +14,13 @@ class Post(models.Model):
     excerpt = models.TextField(blank=True)
     updated_on = models.DateTimeField(auto_now=True)
 
+    # Meta
+    class Meta:
+        ordering = ["-created_on"]
+    #methods    
+    def __str__(self):
+        return f"The title of this post is {self.title}"
+
 # Comment model
 class Comment(models.Model):
     post = models.ForeignKey(
